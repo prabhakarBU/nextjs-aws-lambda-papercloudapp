@@ -8,6 +8,7 @@ export default function Home() {
 
   useEffect(() => {
     console.log("inside useeffect");
+    makeLambdaCall();
   });
   const makeLambdaCall = async () => {
     try {
@@ -41,15 +42,12 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <button
-          className="extractJsonButton"
-          type="button"
-          onClick={makeLambdaCall}
-        >
-          Call Lambda
+
+        {lambdaResponse ? lambdaResponse : "Waiting on useEffect..."}
+
+        <button className="makeLambdaCallButton" type="button" onClick={makeLambdaCall}>
+          Click Me and Call Lambda Instead
         </button>
-        
-        {lambdaResponse ? lambdaResponse : "Waiting..."}
 
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
